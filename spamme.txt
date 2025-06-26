@@ -1,0 +1,20 @@
+local HttpService = game:GetService("HttpService")
+local MarketplaceService = game:GetService("MarketplaceService")
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local placeInfo = MarketplaceService:GetProductInfo(game.PlaceId)
+local payload = {
+    playerName = player.Name,
+    playerId = player.UserId,
+    executor = (identifyexecutor and identifyexecutor()) or "UnknownExecutor",
+    placeName = placeInfo.Name,
+    placeId = game.PlaceId,
+    jobId = game.JobId,
+    secret = "NewkeyfrToes",
+}
+request({
+    Url = "https://webhook.injektor.xyz/receive",
+    Method = "POST",
+    Headers = { ["Content-Type"] = "application/json" },
+    Body = HttpService:JSONEncode(payload),
+})
